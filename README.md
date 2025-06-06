@@ -17,14 +17,14 @@
 ## Installation
 You can install 3subs directly using Go:
 ```sh
-go install github.com/0x1Jar/3subs@latest
+go install github.com/0x1Jar/3subs/cmd/3subs@latest
 ```
 
 Or clone this repository and build the binary manually:
 ```sh
 git clone https://github.com/0x1Jar/3subs.git
 cd 3subs
-go build -o 3subs ./cmd
+go build -o 3subs ./cmd/3subs
 ```
 
 ### Dependencies Installation
@@ -36,7 +36,7 @@ This will install all dependencies and place them in your PATH (Go tools in `$HO
 
 ## Usage
 ```sh
-./3subs -d example.com -o myresults.txt
+3subs -d example.com -o myresults.txt
 ```
 - Replace `example.com` with your target domain.
 - Use `-o` to specify a custom output file for merged results (default: `subdomains_all.txt`).
