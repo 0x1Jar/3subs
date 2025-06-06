@@ -13,7 +13,7 @@ func main() {
 	banner := `
 ============================================
    3subs - Subdomain Enumeration Automation
-   By: 0xjar (github.com/0x1jar)
+   By: 0xjar (github.com/0x1Jar)
    This tool automates subdomain enumeration
    using subfinder, assetfinder, and findomain.
 ============================================
@@ -21,9 +21,11 @@ func main() {
 	fmt.Println(banner)
 
 	domain := ""
+	output := "subdomains_all.txt"
 	flag.StringVar(&domain, "d", "", "Target domain name")
+	flag.StringVar(&output, "o", "subdomains_all.txt", "Output file name for merged results")
 	flag.Usage = func() {
-		fmt.Println("Usage: ./3subs -d <domain>")
+		fmt.Println("Usage: ./3subs -d <domain> [-o <output_file>]")
 		flag.PrintDefaults()
 	}
 	flag.Parse()
@@ -37,26 +39,29 @@ func main() {
 	start := time.Now()
 
 	fmt.Println("[>] Running subfinder...")
-	if err := internal.RunSubfinder(domain); err != nil {
+	subfinderOut := "subdomains_subfinder.txt"
+	if err := internal.RunSubfinder(domain, subfinderOut); err != nil {
 		log.Fatalf("Error running subfinder: %v", err)
 	}
 	fmt.Println("[√] subfinder done.")
 
 	fmt.Println("[>] Running assetfinder...")
-	if err := internal.RunAssetfinder(domain); err != nil {
+	assetfinderOut := "subdomains_assetfinder.txt"
+	if err := internal.RunAssetfinder(domain, assetfinderOut); err != nil {
 		log.Fatalf("Error running assetfinder: %v", err)
 	}
 	fmt.Println("[√] assetfinder done.")
 
 	fmt.Println("[>] Running findomain...")
-	if err := internal.RunFindomain(domain); err != nil {
+	findomainOut := "subdomain_find.txt"
+	if err := internal.RunFindomain(domain, findomainOut); err != nil {
 		log.Fatalf("Error running findomain: %v", err)
 	}
 	fmt.Println("[√] findomain done.")
 
 	fmt.Println("[>] Merging results and removing duplicates...")
-	files := []string{"subdomains_subfinder.txt", "subdomains_assetfinder.txt", "subdomain_find.txt"}
-	if err := internal.MergeSubdomains(files, "subdomains_all.txt"); err != nil {
+	files := []string{subfinderOut, assetfinderOut, findomainOut}
+	if err := internal.MergeSubdomains(files, output); err != nil {
 		log.Fatalf("Error merging subdomains: %v", err)
 	}
 	fmt.Println("[√] Merge complete.")
