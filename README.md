@@ -17,13 +17,15 @@
 ## Installation
 You can install 3subs directly using Go (the binary will be named `3subs`):
 ```sh
-go install github.com/0x1Jar/3subs@latest
+go install github.com/0x1Jar/3subs/cmd/3subs@latest
 ```
 
 Or clone this repository and build the binary manually:
 ```sh
 git clone https://github.com/0x1Jar/3subs.git
 cd 3subs
+# Build the binary in the current directory
+cd cmd
 go build -o 3subs .
 ```
 
@@ -32,7 +34,20 @@ You can use the provided script to install all required tools (subfinder, assetf
 ```sh
 zsh install_tools.sh
 ```
-This will install all dependencies and place them in your PATH (Go tools in `$HOME/go/bin`, findomain in `/usr/local/bin`).
+- This will install subfinder and assetfinder to `$HOME/go/bin` (ensure this is in your PATH).
+- On macOS, findomain is installed via Homebrew to `/usr/local/bin`.
+- On Linux, findomain is downloaded and placed in `/usr/local/bin`.
+
+#### Troubleshooting
+- If you get a `command not found` error for any tool, ensure `$HOME/go/bin` and `/usr/local/bin` are in your `PATH`.
+- For Go tools: Add this to your shell profile (e.g., `~/.zshrc` or `~/.bashrc`):
+  ```sh
+  export PATH="$HOME/go/bin:$PATH"
+  ```
+- For Homebrew (macOS):
+  ```sh
+  export PATH="/usr/local/bin:$PATH"
+  ```
 
 ## Usage
 ```sh
