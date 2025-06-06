@@ -1,12 +1,13 @@
 package main
 
 import (
-	"3subs/internal"
 	"flag"
 	"fmt"
 	"log"
 	"os"
 	"time"
+
+	"github.com/0x1Jar/3subs/internal"
 )
 
 func main() {
