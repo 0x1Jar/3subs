@@ -15,16 +15,16 @@
 - subfinder, assetfinder, and findomain installed and available in your PATH
 
 ## Installation
-You can install 3subs directly using Go:
+You can install 3subs directly using Go (the binary will be named `3subs`):
 ```sh
-go install github.com/0x1Jar/3subs/3subs@latest
+go install github.com/0x1Jar/3subs@latest
 ```
 
 Or clone this repository and build the binary manually:
 ```sh
 git clone https://github.com/0x1Jar/3subs.git
 cd 3subs
-go build -o 3subs ./cmd
+go build -o 3subs .
 ```
 
 ### Dependencies Installation
