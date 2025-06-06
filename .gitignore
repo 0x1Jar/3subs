@@ -1,0 +1,31 @@
+# Binaries
+3subs
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Output files
+subdomains_*.txt
+subdomain_find.txt
+subdomain_find.old.txt
+subdomains_all.txt
+
+# Archives
+*.zip
+
+# Dependency directories
+vendor/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Go build cache
+*.test
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
