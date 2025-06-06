@@ -17,7 +17,7 @@
 ## Installation
 You can install 3subs directly using Go:
 ```sh
-go install github.com/0x1Jar/3subs/cmd@latest
+go install github.com/0x1Jar/3subs/3subs@latest
 ```
 
 Or clone this repository and build the binary manually:
