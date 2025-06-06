@@ -9,7 +9,7 @@ import (
 // RunAssetfinder executes the assetfinder command for the given domain and saves the output to a specified file.
 func RunAssetfinder(domain string) error {
 	cmd := exec.Command("assetfinder", "--subs-only", domain)
-	outputFile := fmt.Sprintf("subdomains_assetfinder.txt")
+	outputFile := "subdomains_assetfinder.txt"
 
 	// Create the output file
 	file, err := os.Create(outputFile)
