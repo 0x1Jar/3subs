@@ -1,8 +1,8 @@
 package internal
 
 import (
-	"io/ioutil"
 	"strings"
+	"os"
 )
 
 // MergeSubdomains merges subdomain files into a single output file and removes duplicates.
@@ -10,7 +10,7 @@ func MergeSubdomains(files []string, outputFile string) error {
 	subdomains := make(map[string]struct{})
 
 	for _, file := range files {
-		data, err := ioutil.ReadFile(file)
+		data, err := os.ReadFile(file)
 		if err != nil {
 			return err
 		}
@@ -26,6 +26,5 @@ func MergeSubdomains(files []string, outputFile string) error {
 	for subdomain := range subdomains {
 		uniqueSubdomains = append(uniqueSubdomains, subdomain)
 	}
-
-	return ioutil.WriteFile(outputFile, []byte(strings.Join(uniqueSubdomains, "\n")), 0644)
+	return os.WriteFile(outputFile, []byte(strings.Join(uniqueSubdomains, "\n")), 0644)
 }
